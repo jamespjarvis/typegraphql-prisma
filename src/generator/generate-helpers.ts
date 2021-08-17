@@ -1,6 +1,11 @@
 import { SourceFile } from "ts-morph";
 
-export function generateHelpersFile(sourceFile: SourceFile) {
+export function generateHelpersFile(
+  sourceFile: SourceFile,
+  contextPrismaKey?: string,
+) {
+  const key = contextPrismaKey || "prisma";
+
   sourceFile.addStatements(/* ts */ `
     export function transformFields(fields: Record<string, any>): Record<string, any> {
       return Object.fromEntries(
@@ -19,11 +24,11 @@ export function generateHelpersFile(sourceFile: SourceFile) {
 
   sourceFile.addStatements(/* ts */ `
     export function getPrismaFromContext(context: any) {
-      const prismaClient = context[${process.env.CONTEXT_PRISMA_KEY} || 'prisma'];
+      const prismaClient = context.${key};
       if (!prismaClient) {
         throw new Error("Unable to find Prisma Client in GraphQL context. Please provide it under the \`context.prisma\` key.");
       }
       return prismaClient;
     }
   `);
-
+}

@@ -177,11 +177,8 @@ const config = {
   "generator": {
     "name": "client",
     "provider": "prisma-client-js",
-    "output": "/home/majkel/development/typegraphql-prisma/experiments/prisma/generated/client",
-    "binaryTargets": [
-      "windows",
-      "debian-openssl-1.1.x"
-    ],
+    "output": "/Users/jjarvis/Documents/projects/typegraphql-prisma/experiments/prisma/generated/client",
+    "binaryTargets": [],
     "previewFeatures": [
       "groupBy",
       "createMany",
@@ -191,8 +188,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "sqliteDatasourceOverrides": [],
   "relativePath": "../..",
@@ -226,11 +222,8 @@ Object.assign(exports, Prisma)
  * In order to make `ncc` and `@vercel/nft` happy.
  * The process.cwd() annotation is only needed for https://github.com/vercel/vercel/tree/master/packages/now-next
 **/
-path.join(__dirname, 'query-engine-windows');
-path.join(process.cwd(), './prisma/generated/client/query-engine-windows');
-
-path.join(__dirname, 'query-engine-debian-openssl-1.1.x');
-path.join(process.cwd(), './prisma/generated/client/query-engine-debian-openssl-1.1.x');
+path.join(__dirname, 'query-engine-darwin');
+path.join(process.cwd(), './prisma/generated/client/query-engine-darwin');
 
 /**
  * Annotation for `@vercel/nft`

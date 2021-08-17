@@ -332,8 +332,8 @@ export default async function generateCode(
       );
     });
   });
-  const generateMappingData = dmmfDocument.modelMappings.map<GenerateMappingData>(
-    mapping => {
+  const generateMappingData =
+    dmmfDocument.modelMappings.map<GenerateMappingData>(mapping => {
       const model = dmmfDocument.datamodel.models.find(
         model => model.name === mapping.model,
       )!;
@@ -342,8 +342,7 @@ export default async function generateCode(
         resolverName: mapping.resolverName,
         actionResolverNames: mapping.actions.map(it => it.actionResolverName),
       };
-    },
-  );
+    });
   const crudResolversBarrelExportSourceFile = project.createSourceFile(
     path.resolve(
       baseDirPath,
@@ -466,7 +465,7 @@ export default async function generateCode(
     undefined,
     { overwrite: true },
   );
-  generateHelpersFile(helpersSourceFile);
+  generateHelpersFile(helpersSourceFile, options.contextPrismaKey);
 
   log("Generating index file");
   const indexSourceFile = project.createSourceFile(

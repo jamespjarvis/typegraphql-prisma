@@ -14,6 +14,7 @@ function parseStringBoolean(stringBoolean: string | undefined) {
 
 export async function generate(options: GeneratorOptions) {
   const outputDir = options.generator.output!;
+
   await asyncFs.mkdir(outputDir, { recursive: true });
   await removeDir(outputDir, true);
 
@@ -39,6 +40,7 @@ export async function generate(options: GeneratorOptions) {
     useUncheckedScalarInputs: parseStringBoolean(
       generatorConfig.useUncheckedScalarInputs,
     ),
+    contextPrismaKey: generatorConfig.contextPrismaKey,
   };
 
   if (config.emitDMMF) {
